@@ -14,6 +14,10 @@ variable "enable_event_rules" {
   default = false
 }
 
+variable "aws_accounts" {
+  type    = map(string)
+}
+
 /* Tags Variables */
 #Use: tags = merge(var.project-tags, { Name = "${var.resource-name-tag}-place-holder" }, )
 variable "project-tags" {
