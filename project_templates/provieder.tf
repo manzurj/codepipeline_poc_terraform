@@ -20,9 +20,14 @@ terraform {
 # Configure the AWS Provider
 provider "aws" {
   region  = var.aws_region
-  profile = var.aws_profile
+  assume_role {
+    role_arn     = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/${lower("${var.name-prefix}-deploy-role")}"
+    session_name = "codebuild_deploy"
+  }
 
   default_tags {
     tags = var.project-tags
   }
 }
+
+data "aws_caller_identity" "current" {}
