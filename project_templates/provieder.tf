@@ -12,7 +12,7 @@ terraform {
     key            = "global/terraform.tfstate"
     dynamodb_table = "tfbootstrap-6082022"
     region         = "us-east-1"
-    profile        = "default"
+    acl            = "bucket-owner-full-control"
     encrypt        = true
   }
 }
